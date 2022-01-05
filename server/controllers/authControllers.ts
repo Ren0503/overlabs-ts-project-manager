@@ -133,7 +133,7 @@ export async function register(req: Request, res: Response): Promise<void> {
  * @param req 
  * @param res 
  */
-export function handler(req: Request, res: Response): void {
+export function logout(req: Request, res: Response): void {
     res.setHeader(
         'Set-Cookie',
         serialize('token', req.body.token, {

@@ -1,7 +1,7 @@
 import mongoose, { Document } from 'mongoose';
 import { ColumnDocument, UserDocument } from '.';
 
-export interface Project {
+export interface IProject {
     _id: string;
     name: string;
     description?: string;
@@ -13,6 +13,6 @@ export interface Project {
     updatedAt: number;
 };
 
-export interface ProjectDocument extends Document, Omit<Project, '_id'> { }
+export interface ProjectDocument extends Document, Omit<IProject, '_id'> { }
 
 export interface ProjectModel extends mongoose.Model<ProjectDocument> { }

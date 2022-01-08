@@ -11,7 +11,7 @@ export enum LabelsEnum {
 
 export const Labels = Object.values(LabelsEnum);
 
-export interface Board {
+export interface IBoard {
     _id: string;
     title: string;
     description?: string;
@@ -22,6 +22,6 @@ export interface Board {
     updatedAt: number;
 };
 
-export interface BoardDocument extends Omit<Board, '_id'>, Document { }
+export interface BoardDocument extends Omit<IBoard, '_id'>, Document { }
 
 export interface BoardModel extends mongoose.Model<BoardDocument> { }

@@ -3,23 +3,25 @@ import mongoose from 'mongoose';
 import { UserDocument } from '../types';
 
 const userSchema = new mongoose.Schema<UserDocument>({
-    username: { 
-        type: String, 
-        unique: true, 
-        required: true 
+    username: {
+        type: String,
+        unique: true,
+        required: true
     },
-    email: { 
-        type: String, 
-        unique: true, 
-        required: true 
+    email: {
+        type: String,
+        unique: true,
+        required: true
     },
-    password: { 
-        type: String, 
-        required: true, 
+    password: {
+        type: String,
+        required: true,
     },
-    avatar: { 
-        type: String, 
-        required: true 
+    avatar: {
+        type: String,
+        default: function () {
+            return `https://www.gravatar.com/avatar/${this._id}?d=wavatar`;
+        }
     },
 }, {
     timestamps: true,

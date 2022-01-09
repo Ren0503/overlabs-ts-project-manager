@@ -5,6 +5,7 @@ import {
     deleteBoard, 
     deleteColumn, 
     deleteProject, 
+    dragBoard, 
     getAllProjects,
     getProjectById,
     updateBoard,
@@ -18,6 +19,8 @@ router.route('/')
     .post(createProject)
 
 router.route('/:projectId/columns/:columnId').delete(deleteColumn)
+
+router.route('/:projectId/boards/drag').post(dragBoard)
 
 router.route('/:projectId/boards/:boardId')
     .put(updateBoard)

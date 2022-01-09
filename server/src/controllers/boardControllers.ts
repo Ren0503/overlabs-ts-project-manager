@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { isEqual } from 'lodash';
 import { Request, Response } from 'express';
 import { Board, Column } from '../models';
 import { getUserFromCookie } from '../utils';
@@ -32,6 +33,48 @@ export const createBoard = async (req: Request, res: Response) => {
         throw new Error('Something went wrong');
     }
 };
+
+export const dragBoard = async (req: Request, res: Response) => {
+    try {
+        const userId = getUserFromCookie(req, res, true);
+        const { draggableId, source, destination } = req.body;
+
+        const board = await Board.findOne({
+            _id: new mongoose.Schema.Types.ObjectId(draggableId),
+            projectId: req.query.projectId,
+            author: userId,
+        });
+        if (!board) {
+            return res.status(403).json({ error: 'Not authorized' });
+        }
+
+        if (isEqual(source, destination) || !destination) {
+            return res.status(400).json({ error: 'board not dragged' });
+        }
+
+        await Column.updateOne(
+            { _id: source.droppableId },
+            {
+                $pull: {
+                    boards: new mongoose.Schema.Types.ObjectId(draggableId)
+                }
+            }
+        );
+
+        await Column.updateOne(
+            { _id: destination.droppableId },
+            {
+                $push: {
+                    boards: { $each: [draggableId], $position: destination.index },
+                },
+            }
+        );
+        return res.json({ ok: true });
+    } catch (error) {
+        res.status(503);
+        throw new Error('Something went wrong');
+    }
+}
 
 export const updateBoard = async (req: Request, res: Response) => {
     try {

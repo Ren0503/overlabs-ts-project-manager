@@ -32,7 +32,7 @@ export const Modal: FunctionComponent<ModalProps> = ({ children, isOpen }) => {
     )
 };
 
-export const ModelContent: FunctionComponent = ({ children }) => {
+export const ModalContent: FunctionComponent = ({ children }) => {
     return (
         <div className='relative py-20 max-w-sm max-h-[100vh-1rem] mx-auto mt-12 bg-gray-900 rounded-md'>
             {children}
@@ -44,7 +44,7 @@ export const ModalBody: FunctionComponent = ({ children }) => {
     return <main className='max-h-full px-5 overflow-y-auto'>{children}</main>;
 };
 
-export const ModelHeader: FunctionComponent<ModalCloseProps> = ({
+export const ModalHeader: FunctionComponent<ModalCloseProps> = ({
     children,
     isClosable,
     onClose

@@ -10,12 +10,12 @@ export const createBoard = async (req: Request, res: Response) => {
         const { columnId, boardData } = req.body;
         const board = await Board.create({
             ...boardData,
-            projectId: req.query.projectId,
+            projectId: req.params.projectId,
             author: userId,
         });
         const column = await Column.findOne({
             _id: new mongoose.Schema.Types.ObjectId(columnId),
-            projectId: req.query.projectId,
+            projectId: req.params.projectId,
         });
 
         if (column) {
@@ -35,7 +35,8 @@ export const createBoard = async (req: Request, res: Response) => {
 
 export const updateBoard = async (req: Request, res: Response) => {
     try {
-        const { projectId, boardId } = req.query;
+        const projectId = req.params.projectId;
+        const boardId = req.params.boardId;
         const userId = getUserFromCookie(req, res, true);
 
         const boardToEdit: Partial<IBoard> = {
@@ -60,7 +61,8 @@ export const updateBoard = async (req: Request, res: Response) => {
 
 export const deleteBoard = async (req: Request, res: Response) => {
     try {
-        const { projectId, boardId } = req.query;
+        const projectId = req.params.projectId;
+        const boardId = req.params.boardId;
         const userId = getUserFromCookie(req, res, true);
 
         const boardDeleteResult = await Board.deleteOne({

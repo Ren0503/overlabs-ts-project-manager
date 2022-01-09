@@ -10,7 +10,7 @@ export const deleteColumn = async (req: Request, res: Response) => {
 
         const projects = await Project.aggregate()
             .match({
-                _id: new mongoose.Schema.Types.ObjectId(req.query.projectId as string)
+                _id: new mongoose.Schema.Types.ObjectId(req.params.projectId as string)
             })
             .lookup({
                 from: 'columns',
@@ -24,10 +24,10 @@ export const deleteColumn = async (req: Request, res: Response) => {
 
         if (projectOwnerId === userId) {
             const boardIds = project.columns.find(
-                (col) => col._id == req.query.columnId
+                (col) => col._id == req.params.columnId
             );
             await Column.updateOne(
-                { _id: req.query.columnId, projectId: req.query.projectId },
+                { _id: req.params.columnId, projectId: req.params.projectId },
                 { $set: { boards: [] } }
             );
             await Board.deleteMany({ _id: { $in: boardIds } });

@@ -81,7 +81,7 @@ export const createProject = async (req: Request, res: Response) => {
 export const getProjectById = async (req: Request, res: Response) => {
     try {
         const projects = await Project.aggregate()
-            .match({ _id: new mongoose.Schema.Types.ObjectId(req.query.projectId as string) })
+            .match({ _id: new mongoose.Schema.Types.ObjectId(req.params.projectId as string) })
             .lookup({
                 from: 'columns',
                 localField: '_id',
@@ -99,7 +99,7 @@ export const getProjectById = async (req: Request, res: Response) => {
 
         const boards = await Board.aggregate()
             .match({
-                projectId: new mongoose.Schema.Types.ObjectId(req.query.projectId as string),
+                projectId: new mongoose.Schema.Types.ObjectId(req.params.projectId as string),
             })
             .lookup({
                 from: 'users',
@@ -127,7 +127,7 @@ export const updateProject = async (req: Request, res: Response) => {
 
         const { acknowledged } = await Project.updateOne(
             {
-                _id: req.query.projectId,
+                _id: req.params.projectId,
                 creator: userId,
             },
             { $set: req.body.project },
@@ -146,7 +146,7 @@ export const deleteProject = async (req: Request, res: Response) => {
         const userId = getUserFromCookie(req, res, true);
 
         const { deletedCount } = await Project.deleteOne({
-            _id: req.query.projectId,
+            _id: req.params.projectId,
             creator: userId,
         });
 

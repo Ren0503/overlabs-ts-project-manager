@@ -4,7 +4,7 @@
 //
 // import { User } from 'path/to/interfaces';
 
-export type User = {
-  id: number
-  name: string
-}
+export * from './user';
+export * from './board';
+export * from './project';
+export * from './column';

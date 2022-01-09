@@ -1,15 +1,20 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import React from 'react';
+import Head from 'next/head';
+import { Showcase } from 'components/project';
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+const Home = () => {
+  return (
+    <div>
+      <Head>
+        <title>Overlabs</title>
+        <meta
+          name='description'
+          content='Find collabs, share projects, and manage task boards among peers.'
+        />
+      </Head>
+      <Showcase />
+    </div>
+  );
+};
 
-export default IndexPage
+export default Home;

@@ -1,5 +1,7 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { Form, Formik } from 'formik';
 import { Board } from 'interfaces';
+import { isEmpty } from 'utils';
 import { useProject } from './ProjectContext';
 import { 
     Button, 
@@ -11,8 +13,6 @@ import {
     ModalHeader, 
     TextField 
 } from 'components/shared';
-import { Form, Formik } from 'formik';
-import { isEmpty } from 'utils';
 import useDisclosure from 'hooks/useDisclosure';
 
 type SetModalFunction = (column: string, boardToEdit?: Board) => void;
@@ -21,14 +21,13 @@ interface BoardModalContext {
     column: string;
     setBoardModal: SetModalFunction;
     modelHelper: ReturnType<typeof useDisclosure>;
-};
+}
 
 const BoardModalContext = createContext<BoardModalContext>(null);
 
-const BoardModalProvider = ({ children }: { children: React.ReactNode }) => {
+function BoardModalProvider({ children }: { children: React.ReactNode }) {
     const [column, setColumn] = useState<string | undefined>();
     const [boardToEdit, setBoardToEdit] = useState<Board | undefined>();
-
     const { isOpen, onClose, onOpen, toggle } = useDisclosure(() =>
         setColumn(undefined)
     );
@@ -95,7 +94,6 @@ const BoardModalProvider = ({ children }: { children: React.ReactNode }) => {
                                 <Form id='board-form'>
                                     <InputField label='title' name='title' />
                                     <TextField label='description' name='description' />
-
                                     <ModalFooter isClosable onClose={onClose}>
                                         <Button
                                             isLoading={isSubmitting}
@@ -112,9 +110,10 @@ const BoardModalProvider = ({ children }: { children: React.ReactNode }) => {
                     </ModalBody>
                 </ModalContent>
             </Modal>
+            {children}
         </BoardModalContext.Provider>
-    )
-};
+    );
+}
 
 export const useBoardModal = () => useContext(BoardModalContext);
 

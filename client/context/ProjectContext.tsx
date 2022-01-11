@@ -1,12 +1,11 @@
-import { createContext, useContext, useReducer } from 'react';
 import produce from 'immer';
+import { createContext, useContext, useReducer } from 'react';
 import { isEqual } from 'lodash';
-import { useRouter } from 'next/router';
 import { DropResult, OnDragEndResponder } from 'react-beautiful-dnd';
-
-import { useToast } from './ToastContext';
-import { Board, Column, Project, User } from 'interfaces';
+import { useRouter } from 'next/router';
 import { publicFetch } from 'utils';
+import { Board, Column, Project, User } from 'interfaces';
+import { useToast } from './ToastContext';
 
 type BoardActionPayload = {
     columnId?: string;
@@ -29,7 +28,7 @@ interface ProjectAction {
     | 'SET_COLUMN'
     | 'DRAG_BOARD';
     payload?: string | BoardActionPayload | ProjectActionPayload | DropResult;
-};
+}
 
 export interface ProjectState extends Omit<Project, 'creator'> {
     columns: Column[];

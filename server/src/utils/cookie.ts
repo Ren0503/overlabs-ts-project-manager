@@ -6,7 +6,6 @@ const COOKIE_NAME = 'user-auth';
 export const setTokenCookie = (res: Response, userId: string) => {    
     res.cookie(COOKIE_NAME, generateToken(userId), {
         maxAge: 7 * 24 * 60 * 60 * 1000,
-        httpOnly: true,
         sameSite: 'strict',
         path: '/',
     });
@@ -33,9 +32,7 @@ export const getUserFromCookie = (
 export const clearTokenCookie = (res: Response) => {
     res.clearCookie(COOKIE_NAME, {
         maxAge: 0,
-        httpOnly: true,
         sameSite: 'strict',
-        secure: true,
         path: '/',
     });
 }

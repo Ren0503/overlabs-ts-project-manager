@@ -1,9 +1,9 @@
-import mongoose from 'mongoose';
 import { isEqual } from 'lodash';
 import { Request, Response } from 'express';
 import { Board, Column } from '../models';
 import { getUserFromCookie } from '../utils';
 import { IBoard } from '../types';
+import { Types } from 'mongoose';
 
 export const createBoard = async (req: Request, res: Response) => {
     try {
@@ -15,7 +15,7 @@ export const createBoard = async (req: Request, res: Response) => {
             author: userId,
         });
         const column = await Column.findOne({
-            _id: new mongoose.Schema.Types.ObjectId(columnId),
+            _id: new Types.ObjectId(columnId),
             projectId: req.params.projectId,
         });
 
@@ -40,7 +40,7 @@ export const dragBoard = async (req: Request, res: Response) => {
         const { draggableId, source, destination } = req.body;
 
         const board = await Board.findOne({
-            _id: new mongoose.Schema.Types.ObjectId(draggableId),
+            _id: new Types.ObjectId(draggableId),
             projectId: req.query.projectId,
             author: userId,
         });
@@ -56,7 +56,7 @@ export const dragBoard = async (req: Request, res: Response) => {
             { _id: source.droppableId },
             {
                 $pull: {
-                    boards: new mongoose.Schema.Types.ObjectId(draggableId)
+                    boards: new Types.ObjectId(draggableId)
                 }
             }
         );
@@ -121,7 +121,7 @@ export const deleteBoard = async (req: Request, res: Response) => {
             },
             {
                 $pull: {
-                    boards: new mongoose.Schema.Types.ObjectId(boardId as string)
+                    boards: new Types.ObjectId(boardId as string)
                 }
             }
         );

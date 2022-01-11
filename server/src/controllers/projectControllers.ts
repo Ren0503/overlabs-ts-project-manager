@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import { Types } from 'mongoose';
 import { Request, Response } from 'express';
 import { Board, Column, Project } from '../models';
 import { getUserFromCookie } from '../utils';
@@ -81,7 +81,7 @@ export const createProject = async (req: Request, res: Response) => {
 export const getProjectById = async (req: Request, res: Response) => {
     try {
         const projects = await Project.aggregate()
-            .match({ _id: new mongoose.Schema.Types.ObjectId(req.params.projectId as string) })
+            .match({ _id: new Types.ObjectId(req.params.projectId as string) })
             .lookup({
                 from: 'columns',
                 localField: '_id',
@@ -99,7 +99,7 @@ export const getProjectById = async (req: Request, res: Response) => {
 
         const boards = await Board.aggregate()
             .match({
-                projectId: new mongoose.Schema.Types.ObjectId(req.params.projectId as string),
+                projectId: new Types.ObjectId(req.params.projectId as string),
             })
             .lookup({
                 from: 'users',

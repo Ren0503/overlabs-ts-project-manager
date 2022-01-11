@@ -8,8 +8,14 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import nProgress from 'nprogress';
 import 'styles/global.css';
+import axios from 'axios';
+import { baseURL } from 'utils';
 
 dayjs.extend(relativeTime);
+
+axios.defaults.baseURL = baseURL;
+axios.defaults.withCredentials = true;
+axios.defaults.headers['Content-Type'] = 'application/json';
 
 Router.events.on('routeChangeStart', () => {
     nProgress.start();

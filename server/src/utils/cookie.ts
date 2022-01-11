@@ -8,7 +8,6 @@ export const setTokenCookie = (res: Response, userId: string) => {
         maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true,
         sameSite: 'strict',
-        secure: true,
         path: '/',
     });
 }
@@ -19,12 +18,11 @@ export const getUserFromCookie = (
     strict?: boolean
 ) => {
     try {
-        const token = req?.cookies[COOKIE_NAME]
+        const token = req.cookies[COOKIE_NAME]
 
-        console.log(req.cookies[COOKIE_NAME]);
         if (!token) throw Error('No token');
         const payload: any = verifyToken(token);
-        return payload.userId;
+        return payload.id;
     } catch (err) {
         if (!strict) return null;
         res.status(401);

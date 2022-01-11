@@ -41,11 +41,11 @@ export const dragBoard = async (req: Request, res: Response) => {
 
         const board = await Board.findOne({
             _id: new Types.ObjectId(draggableId),
-            projectId: req.query.projectId,
+            projectId: req.params.projectId,
             author: userId,
         });
         if (!board) {
-            return res.status(403).json({ error: 'Not authorized' });
+            return res.status(403).json({ error: 'Not find board' });
         }
 
         if (isEqual(source, destination) || !destination) {

@@ -7,6 +7,7 @@ import ToastProvider from 'context/ToastContext';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import nProgress from 'nprogress';
+import 'styles/global.css';
 
 dayjs.extend(relativeTime);
 

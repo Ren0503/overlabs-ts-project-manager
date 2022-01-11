@@ -3,9 +3,7 @@ import { generateToken, verifyToken } from '.';
 
 const COOKIE_NAME = 'user-auth';
 
-export const setTokenCookie = (res: Response, userId: string) => {
-    console.log(generateToken(userId));
-    
+export const setTokenCookie = (res: Response, userId: string) => {    
     res.cookie(COOKIE_NAME, generateToken(userId), {
         maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true,

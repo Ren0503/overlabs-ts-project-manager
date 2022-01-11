@@ -43,7 +43,7 @@ const Login = () => {
                     initialValues={{ usernameOrEmail: '', password: '' }}
                     onSubmit={async (values) => {
                         try {
-                            const res = await publicFetch.post('/users/login', values);
+                            const res = await publicFetch.post('users/login', values);
                             if (res.data.user) {
                                 setUser(res.data.user);
                                 router.push('/projects');

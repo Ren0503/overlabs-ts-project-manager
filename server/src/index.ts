@@ -12,10 +12,16 @@ dotenv.config();
 connectDB();
 const app = express();
 
+// Enable cors
+const corsOptions = {
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+};
+
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(morgan('dev'));
 
 app.use('/api/users', userRoutes);

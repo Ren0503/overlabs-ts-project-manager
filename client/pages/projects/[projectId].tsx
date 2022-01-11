@@ -31,7 +31,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     try {
         const res = await publicFetch.get(`/projects/${query.projectId}`);
         resetServerContext();
-        console.log(res.data);
         return { props: { project: res.data.project } };
     } catch (err) {
         console.error(err);

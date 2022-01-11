@@ -7,6 +7,10 @@ const ColumnBoard = () => {
         project: { columns, boards, _id: projectId },
         onDragEnd,
     } = useProject();
+    
+    console.log(columns);
+    console.log(boards);
+    console.log(projectId);
 
     return (
         <section className='grid gap-3 mt-10 mb-20 md:grid-cols-3 md:gap-5'>

@@ -1,8 +1,8 @@
+import React from 'react';
 import { SingleBoard } from 'components/board';
 import { useAuth } from 'context/AuthContext'
 import { useBoardModal } from 'context/BoardModalContext';
 import { Board, Column } from 'interfaces'
-import React, { FunctionComponent } from 'react'
 import { Droppable } from 'react-beautiful-dnd';
 import { FaPlus } from 'react-icons/fa';
 import ColumnMenu from './ColumnMenu';
@@ -12,7 +12,7 @@ interface ColumnProps {
     boards: Board[];
 }
 
-const ColumnSingle: FunctionComponent<ColumnProps> = ({ column, boards }) => {
+function ColumnSingle ({ column, boards }:ColumnProps) {
     const { user } = useAuth();
     const { setBoardModal } = useBoardModal();
 

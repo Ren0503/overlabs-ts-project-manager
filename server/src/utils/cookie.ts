@@ -1,31 +1,29 @@
-import cookie from 'cookie';
 import { Request, Response } from 'express';
 import { generateToken, verifyToken } from '.';
 
-const COOKIE_NAME = 'fin-auth';
+const COOKIE_NAME = 'user-auth';
 
-export function setTokenCookie(res: Response, userId: string) {
-    res.setHeader(
-        'Set-Cookie',
-        cookie.serialize(COOKIE_NAME, generateToken(userId), {
-            maxAge: 7 * 24 * 60 * 60 * 1000,
-            httpOnly: true,
-            sameSite: 'strict',
-            secure: true,
-            path: '/',
-        })
-    );
+export const setTokenCookie = (res: Response, userId: string) => {
+    console.log(generateToken(userId));
+    
+    res.cookie(COOKIE_NAME, generateToken(userId), {
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+        sameSite: 'strict',
+        secure: true,
+        path: '/',
+    });
 }
 
-export function getUserFromCookie(
+export const getUserFromCookie = (
     req: Request,
     res: Response,
     strict?: boolean
-) {
+) => {
     try {
-        const token =
-            req?.headers?.cookie && cookie.parse(req.headers.cookie)[COOKIE_NAME];
-            
+        const token = req?.cookies[COOKIE_NAME]
+
+        console.log(req.cookies[COOKIE_NAME]);
         if (!token) throw Error('No token');
         const payload: any = verifyToken(token);
         return payload.userId;
@@ -36,15 +34,12 @@ export function getUserFromCookie(
     }
 }
 
-export function clearTokenCookie(res: Response) {
-    res.setHeader(
-        'Set-Cookie',
-        cookie.serialize(COOKIE_NAME, '', {
-            maxAge: 0,
-            httpOnly: true,
-            sameSite: 'strict',
-            secure: true,
-            path: '/',
-        })
-    );
+export const clearTokenCookie = (res: Response) => {
+    res.clearCookie(COOKIE_NAME, {
+        maxAge: 0,
+        httpOnly: true,
+        sameSite: 'strict',
+        secure: true,
+        path: '/',
+    });
 }

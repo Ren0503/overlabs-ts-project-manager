@@ -50,6 +50,7 @@ export const login = async (req: Request, res: Response) => {
         }
 
         setTokenCookie(res, user._id);
+        console.log(res.cookie)
         return res.json({ user: { ...user.toJSON(), password: undefined } });
     } catch (error) {
         res.status(503);

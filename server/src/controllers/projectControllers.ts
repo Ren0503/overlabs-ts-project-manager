@@ -1,25 +1,31 @@
 import { Types } from 'mongoose';
 import { Request, Response } from 'express';
 import { Board, Column, Project } from '../models';
-import { getUserFromCookie } from '../utils';
+import { getOrSetCache, getUserFromCookie } from '../utils';
 
 export const getAllProjects = async (req: Request, res: Response) => {
     try {
-        const projects = await Project.aggregate()
-            .lookup({
-                from: 'boards',
-                as: 'boards',
-                localField: '_id',
-                foreignField: 'projectId',
-            })
-            .lookup({
-                from: 'users',
-                localField: 'creator',
-                foreignField: '_id',
-                as: 'creator',
-            })
-            .unwind('creator')
-            .project({ 'creator.password': 0 });
+        const cacheKey = 'projects';
+
+        const projects = await getOrSetCache(cacheKey, async () => {
+            const data = await Project.aggregate()
+                .lookup({
+                    from: 'boards',
+                    as: 'boards',
+                    localField: '_id',
+                    foreignField: 'projectId',
+                })
+                .lookup({
+                    from: 'users',
+                    localField: 'creator',
+                    foreignField: '_id',
+                    as: 'creator',
+                })
+                .unwind('creator')
+                .project({ 'creator.password': 0 });
+
+            return data;
+        });
 
         return res.json({ projects });
     } catch (error) {

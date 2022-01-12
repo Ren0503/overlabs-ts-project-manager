@@ -13,17 +13,36 @@ const Navbar = () => {
         <>
             <header className='fixed inset-0 w-screen h-16 bg-gray-800 shadow'>
                 <nav className='container flex items-center h-full'>
-                    <Link href={user ? '/projects' : '/'}>
+                    <Link href={'/'}>
                         <a className='text-2xl font-bold'>
                             <span className='text-blue-600'>Over</span>Labs
                         </a>
                     </Link>
-                    <Link href='/about'>
-                        <span>About</span>
-                    </Link>
-                    <Link href='/contact'>
-                        <span>Contact</span>
-                    </Link>
+                    <div className="hidden md:block">
+                        <ul className="inline-flex">
+                            <li>
+                                <Link href='/projects'>
+                                    <a className="px-4 font-bold hover:text-gray-800">
+                                        Projects
+                                    </a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href='/about'>
+                                    <a className="px-4 font-bold hover:text-gray-800">
+                                        About
+                                    </a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href='/contact'>
+                                    <a className="px-4 font-bold hover:text-gray-800">
+                                        Contact
+                                    </a>
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
 
                     <div className='flex items-center ml-auto space-x-3'>
                         {!loading ? (

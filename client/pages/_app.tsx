@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import Router, { useRouter } from 'next/router';
-import { Navbar } from 'components/core';
+import { Footer, Navbar } from 'components/core';
 import AuthProvider from 'context/AuthContext';
 import ToastProvider from 'context/ToastContext';
 import dayjs from 'dayjs';
@@ -38,6 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <main className='container'>
                     <Component {...pageProps} />
                 </main>
+                <Footer />
             </ToastProvider>
         </AuthProvider>
     );

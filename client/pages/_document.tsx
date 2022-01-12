@@ -16,7 +16,7 @@ class MyDocument extends Document {
         return (
             <Html className='overflow-x-hidden'>
                 <Head>
-                    <link rel='icon' href='/favicon.ico' />
+                    <link rel='icon' href='/logo.png' />
                 </Head>
                 <body className='w-screen overflow-x-hidden text-white bg-gray-900'>
                     <Main />

@@ -15,6 +15,7 @@ const Avatar: FunctionComponent<AvatarProps> = ({
     size = 'sm',
     ...props
 }) => {
+    console.log(props);
     return (
         <img
             {...props}

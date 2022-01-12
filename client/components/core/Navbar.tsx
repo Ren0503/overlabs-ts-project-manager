@@ -15,7 +15,7 @@ const Navbar = () => {
                 <nav className='container flex items-center h-full'>
                     <Link href={user ? '/projects' : '/'}>
                         <a className='text-2xl font-bold'>
-                            <span className='text-blue-600'>Labs</span>Over
+                            <span className='text-blue-600'>Over</span>Labs
                         </a>
                     </Link>
 

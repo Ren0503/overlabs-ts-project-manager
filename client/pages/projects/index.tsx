@@ -33,7 +33,7 @@ const ProjectsPage: NextPage<{ projects: Omit<ProjectState, 'columns'>[] }> = ({
                             <h3 className='font-semibold'>{project.creator.username}</h3>
                         </div>
                         <small className='text-gray-400'>
-                            last updated <strong>{dayjs(project.updatedAt).format('DD MMM YYYY')}</strong>
+                            last updated <strong>{dayjs(project.updatedAt).toNow()}</strong>
                         </small>
                         <p className='mt-3'>{project.description}</p>
                         <div className='flex items-center mt-4 overflow-hidden border border-gray-800 rounded-md w-36'>

@@ -26,7 +26,7 @@ const Showcase = () => {
                 <div className='flex items-center p-5 bg-blue-700 py-7'>
                     <img
                         className='object-contain h-full'
-                        src='/showcase_hero.svg'
+                        src='/teamwork.jpg'
                         alt='hero_image'
                     />
                 </div>

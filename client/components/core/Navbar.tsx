@@ -18,6 +18,12 @@ const Navbar = () => {
                             <span className='text-blue-600'>Over</span>Labs
                         </a>
                     </Link>
+                    <Link href='/about'>
+                        <span>About</span>
+                    </Link>
+                    <Link href='/contact'>
+                        <span>Contact</span>
+                    </Link>
 
                     <div className='flex items-center ml-auto space-x-3'>
                         {!loading ? (

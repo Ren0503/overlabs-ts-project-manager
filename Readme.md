@@ -40,9 +40,9 @@
 | formik | [plugins/formik/README.md](https://github.com/formium/formik/blob/master/packages/formik/README.md) |
 | next | [plugins/next/README.md](https://github.com/vercel/next.js/blob/canary/packages/next/README.md) |
 | react | [plugins/react/README.md](https://github.com/facebook/react/blob/master/README.md) |
-| nprogress | [plugins/react-quill/README.md](https://github.com/zenoamaro/react-quill/blob/master/README.md) |
-| react-beautiful-dnd | [plugins/react-tagsinput/README.md](https://github.com/olahol/react-tagsinput/blob/master/README.md) |
-| tailwindcss | [plugins/yup/README.md](https://github.com/reduxjs/redux)|
+| nprogress | [plugins/react-quill/README.md](https://github.com/rstacruz/nprogress/blob/master/Readme.md) |
+| react-beautiful-dnd | [plugins/react-tagsinput/README.md](https://github.com/atlassian/react-beautiful-dnd/blob/master/README.md) |
+| tailwindcss | [plugins/yup/README.md](https://github.com/tailwindlabs/tailwindcss/blob/master/README.md)|
 | postcss | [plugins/postcss/README.md](https://github.com/postcss/postcss/blob/main/README.md)|
 
 ## Core Structure
@@ -72,3 +72,12 @@
       │   │   └── server.js
       ├── .gitignore
       └── README.md
+
+### Screenshots
+|                                        Projects                                        |                                        Detail                                        |                                        Create                                        |
+| :--------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
+| ![](https://github.com/Ren0503/overlabs-ts-project-manager/blob/master/client/public/screenshots/home.png) | ![](https://github.com/Ren0503/overlabs-ts-project-manager/blob/master/client/public/screenshots/detail.png) | ![](https://github.com/Ren0503/overlabs-ts-project-manager/blob/master/client/public/screenshots/author.png) |
+
+|                                        Edit                                        |                                        About                                        |                                        Contact                                        |
+| :--------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
+| ![](https://github.com/Ren0503/overlabs-ts-project-manager/blob/master/client/public/screenshots/add.png) | ![](https://github.com/Ren0503/overlabs-ts-project-manager/blob/master/client/public/screenshots/dashboard.png) | ![](https://github.com/Ren0503/overlabs-ts-project-manager/blob/master/client/public/assets/screenshots/collection.png) |

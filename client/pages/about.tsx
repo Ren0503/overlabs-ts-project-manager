@@ -10,10 +10,10 @@ const AboutPage = () => {
                 <div className="flex items-center flex-wrap mb-10">
                     <div className="w-full md:w-1/2 px-4">
                         <h4 className="text-3xl  font-bold mb-3">
-                            Responsive to the core
+                            The board is just the beginning
                         </h4>
                         <p className=" mb-8">
-                            Every Tailwind utility also comes with responsive variants, making it extremely easy to build responsive interfaces without resorting to custom CSS.
+                            Lists and cards are the building blocks of organizing work on a Overlabs board. Grow from there with task assignments, timelines, productivity metrics, calendars, and more.
                         </p>
                     </div>
                     <div className="w-full md:w-1/2 px-4">
@@ -26,20 +26,20 @@ const AboutPage = () => {
                     </div>
                     <div className="w-full md:w-1/2 px-4">
                         <h4 className="text-3xl  font-bold mb-3">
-                            Component-friendly
+                            Cards contain everything you need
                         </h4>
                         <p className=" mb-8">
-                            While you can do a lot with just utility classes, as a project grows it can be useful to codify common patterns into higher level abstractions.
+                            The cards are your portal to more organized work—where every single part of your task can be managed, tracked, and shared with teammates.
                         </p>
                     </div>
                 </div>
                 <div className="flex items-center flex-wrap mb-20">
                     <div className="w-full md:w-1/2 px-4">
                         <h4 className="text-3xl  font-bold mb-3">
-                            Designed to be customized
+                            No-code automation
                         </h4>
                         <p className=" mb-8">
-                            If it makes sense to be customizable, Tailwind lets you customize it. This includes colors, border sizes, font weights, spacing utilities, breakpoints, shadows, and tons more.
+                            With Overlabs built-in automation, Butler, reduce the number of tedious tasks (and clicks) on your project board by harnessing the power of automation across your entire team.
                         </p>
                     </div>
                     <div className="w-full md:w-1/2 px-4">
@@ -94,7 +94,7 @@ const AboutPage = () => {
                     <h3 className="my-4 text-2xl text-white">
                         Build the next generation of design experiences
                     </h3>
-                    <button className="transform hover:scale-110 transition duration-300 ease-in-out bg-white font-bold rounded-full mt-6 py-6 px-8 shadow-lg uppercase tracking-wider">
+                    <button className="transform hover:scale-110 text-black transition duration-300 ease-in-out bg-white font-bold rounded-full mt-6 py-6 px-8 shadow-lg uppercase tracking-wider">
                         Get Started
                     </button>
                 </div>

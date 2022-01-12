@@ -1,5 +1,7 @@
 # Overlabs
 
+![Overlabs](https://github.com/Ren0503/overlabs-ts-project-manager/blob/master/client/public/header.png)
+
 > Trang web cho quản lý công việc và lên kế hoạch dự án sử dụng MERN stack với Next(dùng TypeScript). Repo được chia làm hai phần chính:
 
 - **server** chứa API cho Overlabs sử dụng Node.js, Express và MongoDB.

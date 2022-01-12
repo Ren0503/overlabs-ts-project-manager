@@ -52,7 +52,7 @@ const CreateProject: NextPage<{ user: User }> = () => {
                                 className='mt-5'
                                 type='submit'
                             >
-                                create project
+                                Create Project
                             </Button>
                         </Form>
                     )}

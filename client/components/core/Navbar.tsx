@@ -22,21 +22,21 @@ const Navbar = () => {
                         <ul className="inline-flex">
                             <li>
                                 <Link href='/projects'>
-                                    <a className="px-4 font-bold hover:text-gray-800">
+                                    <a className="px-4 font-bold hover:text-yellow-400">
                                         Projects
                                     </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href='/about'>
-                                    <a className="px-4 font-bold hover:text-gray-800">
+                                    <a className="px-4 font-bold hover:text-yellow-400">
                                         About
                                     </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href='/contact'>
-                                    <a className="px-4 font-bold hover:text-gray-800">
+                                    <a className="px-4 font-bold hover:text-yellow-400">
                                         Contact
                                     </a>
                                 </Link>
@@ -58,10 +58,10 @@ const Navbar = () => {
                             ) : (
                                 <>
                                     <Link href='/login'>
-                                        <a className='btn btn-outline'>login</a>
+                                        <a className='btn btn-outline'>Login</a>
                                     </Link>
                                     <Link href='/register'>
-                                        <a className='btn'>register</a>
+                                        <a className='btn'>Register</a>
                                     </Link>
                                 </>
                             )

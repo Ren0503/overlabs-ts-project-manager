@@ -7,19 +7,16 @@ const Showcase = () => {
             <div className='grid items-center grid-cols-1 gap-10 sm:grid-cols-2'>
                 <div className='flex flex-col items-center justify-center text-center sm:items-start sm:text-left'>
                     <h1 className='text-4xl font-bold xl:text-6xl'>
-                        <span className='text-blue-700'>Over</span>Labs
+                        <span className='text-blue-700'>Over</span>Labs helps teams move work forward.
                     </h1>
-                    <p className='my-4 text-lg xl:text-3xl md:w-3/4'>
-                        Find collaborators, share projects and manage task boards among peers.
+                    <p className='my-4 text-lg xl:text-xl md:w-3/4'>
+                        Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique—accomplish it all with Trello.
                     </p>
-                    <div className='flex flex-col items-center mt-4 space-y-2 sm:space-y-0 sm:space-x-4 sm:flex-row'>
+                    <div className='flex flex-col items-center space-y-2 sm:space-y-0 sm:space-x-4 sm:flex-row'>
                         <Link href='/login'>
-                            <a className='text-xl font-bold btn btn-outline w-max'>
-                                get started
+                            <a className="text-xl font-bold btn btn-outline transform hover:scale-110 transition duration-300 ease-in-out font-bold rounded-full py-6 px-8 shadow-lg uppercase tracking-wider">
+                                Get Started
                             </a>
-                        </Link>
-                        <Link href='/projects'>
-                            <a className='text-xl font-bold btn w-max'>browse projects</a>
                         </Link>
                     </div>
                 </div>

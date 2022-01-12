@@ -48,17 +48,17 @@ const EditProjectModal = () => {
                         >
                             {({ isSubmitting, values }) => (
                                 <Form>
-                                    <InputField label='name' name='name' />
-                                    <TextField label='description' name='description' />
+                                    <InputField label='Name' name='name' />
+                                    <TextField label='Description' name='description' />
                                     <InputField
                                         type='url'
-                                        label='source code'
+                                        label='Source code'
                                         name='sourceCode'
                                         placeholder='https://github.com/ren/example'
                                     />
                                     <InputField
                                         type='url'
-                                        label='website'
+                                        label='Website'
                                         name='website'
                                         placeholder='https://ren.com'
                                     />

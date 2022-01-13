@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { User } from '../models';
 import { 
     clearTokenCookie, 
+    getOrSetCache, 
     getUserFromCookie, 
     setTokenCookie 
 } from '../utils';
@@ -71,7 +72,13 @@ export const logout = async (req: Request, res: Response) => {
 export const me = async (req: Request, res: Response) => {
     try {
         const userId = getUserFromCookie(req, res);
-        const user = await User.findById(userId);
+        const cacheKey = 'user';
+
+        const user = await getOrSetCache(cacheKey, async () => {
+            const data = await User.findById(userId);
+
+            return data;
+        });
 
         if (user) {
             return res.json({ user: user.toJSON() });

@@ -10,7 +10,7 @@ const Showcase = () => {
                         <span className='text-blue-700'>Over</span>Labs helps teams move work forward.
                     </h1>
                     <p className='my-4 text-lg xl:text-xl md:w-3/4'>
-                        Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique—accomplish it all with Trello.
+                        Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique — accomplish it all with Trello.
                     </p>
                     <div className='flex flex-col items-center space-y-2 sm:space-y-0 sm:space-x-4 sm:flex-row'>
                         <Link href='/login'>

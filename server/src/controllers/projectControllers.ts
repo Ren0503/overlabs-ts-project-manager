@@ -86,41 +86,47 @@ export const createProject = async (req: Request, res: Response) => {
 
 export const getProjectById = async (req: Request, res: Response) => {
     try {
-        const projects = await Project.aggregate()
-            .match({ _id: new Types.ObjectId(req.params.projectId as string) })
-            .lookup({
-                from: 'columns',
-                localField: '_id',
-                foreignField: 'projectId',
-                as: 'columns',
-            })
-            .lookup({
-                from: 'users',
-                localField: 'creator',
-                foreignField: '_id',
-                as: 'creator',
-            })
-            .unwind('creator')
-            .project({ 'creator.password': 0 });
+        const cacheKey = 'projectDetail';
 
-        const boards = await Board.aggregate()
-            .match({
-                projectId: new Types.ObjectId(req.params.projectId as string),
-            })
-            .lookup({
-                from: 'users',
-                localField: 'author',
-                foreignField: '_id',
-                as: 'author',
-            })
-            .unwind('author')
-            .project({ 'author.password': 0 });
+        const project = await getOrSetCache(`${cacheKey}_${req.params.projectId}`, async () => {
+            const projects = await Project.aggregate()
+                .match({ _id: new Types.ObjectId(req.params.projectId as string) })
+                .lookup({
+                    from: 'columns',
+                    localField: '_id',
+                    foreignField: 'projectId',
+                    as: 'columns',
+                })
+                .lookup({
+                    from: 'users',
+                    localField: 'creator',
+                    foreignField: '_id',
+                    as: 'creator',
+                })
+                .unwind('creator')
+                .project({ 'creator.password': 0 });
 
-        if (!projects.length) {
-            return res.status(404).json({ error: 'Project not found' });
-        }
+            const boards = await Board.aggregate()
+                .match({
+                    projectId: new Types.ObjectId(req.params.projectId as string),
+                })
+                .lookup({
+                    from: 'users',
+                    localField: 'author',
+                    foreignField: '_id',
+                    as: 'author',
+                })
+                .unwind('author')
+                .project({ 'author.password': 0 });
 
-        return res.json({ project: { ...projects[0], boards } });
+            if (!projects.length) {
+                return res.status(404).json({ error: 'Project not found' });
+            }
+
+            return { ...projects[0], boards }
+        });
+
+        return res.json({ project: project });
     } catch (error) {
         res.status(503);
         throw new Error('Something went wrong');

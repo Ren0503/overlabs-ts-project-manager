@@ -4,8 +4,8 @@
 
 > Trang web cho quản lý công việc và lên kế hoạch dự án sử dụng MERN stack với Next(dùng TypeScript). Repo được chia làm hai phần chính:
 
-- **server** chứa API cho Overlabs sử dụng Node.js, Express và MongoDB.
-- **client** trang giao diện dùng NextJS và React Hooks.
+- **server** chứa API cho Overlabs sử dụng Node.js, Express, MongoDB và Redis.
+- **client** trang giao diện dùng NextJS, React Hooks và TailwindCSS.
 
 ## Tính năng
 
@@ -30,6 +30,7 @@
 | mongoose | [plugins/mongoose/README.md](https://github.com/Automattic/mongoose/blob/master/README.md) |
 | morgan | [plugins/morgan/README.md](https://github.com/expressjs/morgan/blob/master/README.md) |
 | nodemon | [plugins/nodemon/README.md](https://github.com/remy/nodemon/blob/master/README.md) |
+| redis | [plugins/redis/README.md](https://github.com/redis/redis/blob/unstable/README.md) |
 
 
 ### Client
